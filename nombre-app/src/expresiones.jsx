@@ -25,7 +25,7 @@ function Lista(){
                         <th>Role</th>
                     </tr>
                     {
-                        users.map(function(user, index){
+                        users.map(function(users, index){
                             return (
                                 <tr key={index}>
                                     <td>{users.name}</td>
