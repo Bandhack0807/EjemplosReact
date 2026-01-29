@@ -1,46 +1,47 @@
-import miImagen from './assets/logo.png';
-function Encabezado(){
-    return(
-        <div>
-            <Logotipo/>
-            <Menu/>
-            <Redes/>
+import './encabezado.css'
+import miImagen from './assets/logo.png'
+import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
+
+function Encabezado() {
+    return (
+        <header className="encabezado">
+            <Logotipo />
+            <Menu />
+            <Redes />
+        </header>
+    )
+}
+
+function Logotipo() {
+    return (
+        <div className="logo">
+            <img src={miImagen} alt="Logotipo" />
         </div>
     )
 }
 
-function Logotipo(){
-    return(
-        <div>
-            <img src={miImagen} alt='Logotipo'/>
-        </div>
-    )
-}
-
-function Menu(){
-    return(
-        <div>
+function Menu() {
+    return (
+        <nav className="menu">
             <ul>
                 <li>Inicio</li>
-                <li>Acerca De</li>
+                <li>Acerca de</li>
                 <li>Productos</li>
                 <li>Contactos</li>
                 <li>Sucursales</li>
             </ul>
-        </div>
+        </nav>
     )
 }
 
-function Redes(){
-    return(
-        <div>
-            <ul>
-                <li>Facebook</li>
-                <li>Whatsapp</li>
-                <li>Instagram</li>
-                <li>Youtube</li>
-                <li>Linkedin</li>
-            </ul>
+function Redes() {
+    return (
+        <div className="redes">
+            <a href="#"><FaFacebookF /></a>
+            <a href="#"><FaWhatsapp /></a>
+            <a href="#"><FaYoutube /></a>
+            <a href="#"><FaInstagram /></a>
+            <a href="#"><FaLinkedinIn /></a>
         </div>
     )
 }

@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.encabezado {
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #f7d9b5;
+    padding: 0 40px;
+
+    position: fixed;   /* 🔥 CLAVE */
+    top: 0;            /* 🔥 PEGADO ARRIBA */
+    left: 0;
+    z-index: 1000;
+}
+
+
+.logo img {
+    width: 60px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background: #c94c4c;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.menu ul li {
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu ul li:hover {
+    text-decoration: underline;
+}
+
+.redes {
+    display: flex;
+    gap: 12px;
+}
+
+.redes a {
+    color: #c94c4c;
+    font-size: 18px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.redes a:hover {
+    transform: scale(1.2);
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .encabezado {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
