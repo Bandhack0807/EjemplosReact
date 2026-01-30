@@ -4,11 +4,30 @@ import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from 'r
 
 function Encabezado() {
     return (
-        <header className="encabezado">
-            <Logotipo />
-            <Menu />
-            <Redes />
-        </header>
+        <>
+            <header className="encabezado">
+                <Logotipo />
+                <Menu />
+                <Redes />
+            </header>
+
+            <section className="cards-container">
+                <div className="card">
+                    <img src="https://picsum.photos/300/180?random=1" alt="card" />
+                    <h3>Ejemplo de card</h3>
+                </div>
+
+                <div className="card">
+                    <img src="https://picsum.photos/300/180?random=2" alt="card" />
+                    <h3>Ejemplo de card</h3>
+                </div>
+
+                <div className="card">
+                    <img src="https://picsum.photos/300/180?random=3" alt="card" />
+                    <h3>Ejemplo de card</h3>
+                </div>
+            </section>
+        </>
     )
 }
 

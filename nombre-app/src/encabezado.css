@@ -15,12 +15,11 @@
     background-color: #f7d9b5;
     padding: 0 40px;
 
-    position: fixed;   /* 🔥 CLAVE */
-    top: 0;            /* 🔥 PEGADO ARRIBA */
+    position: fixed;
+    top: 0;
     left: 0;
     z-index: 1000;
 }
-
 
 .logo img {
     width: 60px;
@@ -71,4 +70,33 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+}
+
+
+.cards-container {
+    margin-top: 120px;
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+}
+
+.card {
+    width: 280px;
+    background-color: #2b2b2b;
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: white;
+    padding: 15px 0;
+    font-weight: normal;
 }
