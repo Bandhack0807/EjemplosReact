@@ -31,7 +31,7 @@ function Encabezado() {
             alt="Geometry Dash"
             className="card-img"
           />
-          <h3>Puro Geometry Dash GOD :P</h3>
+          <h3>Geometry Dash Deidad :P</h3>
         </div>
 
         {/* CARD 2 */}
@@ -41,7 +41,7 @@ function Encabezado() {
             alt="Call Of Duty Mobile"
             className="card-img"
           />
-          <h3>Puro CallOfDuty Mobile ALV :P</h3>
+          <h3> Call Of Duty Mobile :P</h3>
         </div>
 
         {/* CARD 3 */}
