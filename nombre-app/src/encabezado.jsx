@@ -1,17 +1,8 @@
 import "./encabezado.css";
-
-// IMÁGENES DE LAS CARDS
 import GeometryDash1 from "./assets/GeometryDash1.png";
 import CODMobile from "./assets/CODMobile.png";
 import BloodStrikeEmma from "./assets/BloodStrikeEmma.png";
-
-import {
-  FaFacebookF,
-  FaWhatsapp,
-  FaYoutube,
-  FaInstagram,
-  FaLinkedinIn
-} from "react-icons/fa";
+import {FaFacebookF,FaWhatsapp,FaYoutube,FaInstagram,FaLinkedinIn} from "react-icons/fa";
 
 function Encabezado() {
   return (
@@ -24,38 +15,36 @@ function Encabezado() {
 
       <section className="cards-container">
 
-        {/* CARD 1 */}
-        <div className="card">
-          <img
-            src={GeometryDash1}
-            alt="Geometry Dash"
-            className="card-img"
-          />
-          <h3>Geometry Dash Deidad :P</h3>
-        </div>
+        <Card
+          imagen={GeometryDash1}
+          titulo="Geometry Dash Deidad :P"
+          descripcion="Juego de ritmo extremo donde la precisión lo es todo."
+        />
 
-        {/* CARD 2 */}
-        <div className="card">
-          <img
-            src={CODMobile}
-            alt="Call Of Duty Mobile"
-            className="card-img"
-          />
-          <h3> Call Of Duty Mobile :P</h3>
-        </div>
+        <Card
+          imagen={CODMobile}
+          titulo="Call Of Duty Mobile :P"
+          descripcion="Shooter competitivo con acción intensa y multijugador."
+        />
 
-        {/* CARD 3 */}
-        <div className="card">
-          <img
-            src={BloodStrikeEmma}
-            alt="BloodStrike"
-            className="card-img"
-          />
-          <h3>BloodStrike Emma ;P</h3>
-        </div>
+        <Card
+          imagen={BloodStrikeEmma}
+          titulo="BloodStrike Emma ;P"
+          descripcion="Batallas rápidas estilo battle royale en móvil."
+        />
 
       </section>
     </>
+  );
+}
+
+function Card({ imagen, titulo, descripcion }) {
+  return (
+    <div className="card">
+      <img src={imagen} alt={titulo} className="card-img" />
+      <h3>{titulo}</h3>
+      <p className="card-desc">{descripcion}</p>
+    </div>
   );
 }
 
