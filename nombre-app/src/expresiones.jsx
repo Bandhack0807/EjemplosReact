@@ -2,7 +2,24 @@ import './encabezado.css'
 import miImagen from './assets/GeometryDashlogo.png'
 import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
-function Encabezado() {
+/* ---------- PROMOCIONES ---------- */
+function Promociones({ name }) {
+    if (name && name !== "") {
+        return (
+            <div className="promosDiv">
+                <h3>Sección De Promociones</h3>
+                <p>
+                    EN ESTA SECCIÓN SE DA A CONOCER LA INFORMACIÓN
+                    CORRESPONDIENTE A PROMOCIONES DEL SITIO
+                </p>
+            </div>
+        )
+    }
+    return <div>No Hay Datos</div>
+}
+
+/* ---------- EXPRESIONES ---------- */
+function Expresiones({ name }) {
     return (
         <>
             <header className="encabezado">
@@ -10,18 +27,27 @@ function Encabezado() {
                 <Menu />
                 <Redes />
             </header>
+
             <section className="contenido-texto">
                 <h2>Expresiones</h2>
+
+                {/* 👇 SALUDO CON PROPS */}
+                {name && (
+                    <h3>👋 Hola, bienvenido {name}</h3>
+                )}
 
                 <p>
                     Tu Nombre Es: Victor Manuel Y Tus Apellidos Son: Hdez Hdez
                 </p>
 
+                {/* PROMOCIONES */}
+                <Promociones name={name} />
+
                 <table>
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Role</th>
+                            <th>Rol</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +73,7 @@ function Encabezado() {
     )
 }
 
+/* ---------- COMPONENTES AUX ---------- */
 function Logotipo() {
     return (
         <div className="logo">
@@ -81,4 +108,4 @@ function Redes() {
     )
 }
 
-export default Encabezado
+export default Expresiones
