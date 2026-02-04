@@ -2,7 +2,6 @@ import './encabezado.css'
 import miImagen from './assets/GeometryDashlogo.png'
 import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
-/* ---------- PROMOCIONES ---------- */
 function Promociones({ name }) {
     if (name && name !== "") {
         return (
@@ -18,7 +17,6 @@ function Promociones({ name }) {
     return <div>No Hay Datos</div>
 }
 
-/* ---------- EXPRESIONES ---------- */
 function Expresiones({ name }) {
     return (
         <>
@@ -30,8 +28,6 @@ function Expresiones({ name }) {
 
             <section className="contenido-texto">
                 <h2>Expresiones</h2>
-
-                {/* 👇 SALUDO CON PROPS */}
                 {name && (
                     <h3>👋 Hola, bienvenido {name}</h3>
                 )}
@@ -39,8 +35,6 @@ function Expresiones({ name }) {
                 <p>
                     Tu Nombre Es: Victor Manuel Y Tus Apellidos Son: Hdez Hdez
                 </p>
-
-                {/* PROMOCIONES */}
                 <Promociones name={name} />
 
                 <table>
@@ -73,7 +67,6 @@ function Expresiones({ name }) {
     )
 }
 
-/* ---------- COMPONENTES AUX ---------- */
 function Logotipo() {
     return (
         <div className="logo">
