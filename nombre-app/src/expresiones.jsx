@@ -29,7 +29,7 @@ function Expresiones({ name }) {
             <section className="contenido-texto">
                 <h2>Expresiones</h2>
                 {name && (
-                    <h3>👋 Hola, bienvenido {name}</h3>
+                    <h3>Hola, bienvenido {name}</h3>
                 )}
 
                 <p>
