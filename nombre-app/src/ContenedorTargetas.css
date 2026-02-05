@@ -1,0 +1,34 @@
+.ContenedorDiv{
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.TarjetaDiv{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, 
+                rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: white; /* no cambia diseño, asegura contraste */
+}
+
+.TarjetaDiv img{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.TarjetaDiv p{
+    text-align: justify;
+    padding: 10px;
+    color: #000; /* ✅ TEXTO NEGRO */
+}
+
+.TarjetaDiv h3{
+    color: #000; /* ✅ TITULO NEGRO */
+}

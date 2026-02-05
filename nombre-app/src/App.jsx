@@ -1,15 +1,34 @@
+import { useState } from "react";
 import Encabezado from "./encabezado";
+import ContenedorTargetas from "./ContenedorTargetas";
+import PromosContenedor from "./PromosContenedor";
+import PieComponente from "./PieComponente";
 import Expresiones from "./expresiones";
 
-function App(){
-  return(
+function App() {
+  const [vista, setVista] = useState("Inicio");
+
+  return (
     <div>
-      <Encabezado />
-      <Expresiones />
-      <Expresiones name="Victor Manuel" />
-      <h1>5C DSM</h1>
-      <h2>D.S.M VICTOR MANUEL HDEZ HDEZ</h2>
+      <Encabezado cambiarVista={setVista} />
+
+      {/* CONTENEDOR CORRECTO */}
+      <ContenedorTargetas vista={vista} />
+
+      {/* PROMOS */}
+      <PromosContenedor />
+
+      {/* PIE */}
+      <PieComponente />
+
+      {/* EXPRESIONES */}
+      <Expresiones
+        name="Victor Manuel"
+        mostrar={true}
+        mostrarPromos={true}
+      />
     </div>
   );
 }
-export default App
+
+export default App;

@@ -1,0 +1,27 @@
+.PromoContenedor{
+    background-image: url('./assets/imagenes/fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+    margin: 30px auto;
+    min-height: 250px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.PromoContenedor h2{
+    color: white;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.PromoContenedor p{
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+}

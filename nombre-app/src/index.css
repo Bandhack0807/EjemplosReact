@@ -3,9 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* 🔴 CAMBIO CLAVE */
+  color-scheme: light;
+  color: #000;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,18 +19,19 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 body {
-    margin: 0;
-    padding-top: 80px;
-    background-color: #1f1f1f;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 
+  /* 🔴 ERROR CORREGIDO */
+  background-color: white;
+  color: black;
+}
 
 h1 {
   font-size: 3.2em;
@@ -43,26 +45,31 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f1f1f1;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* 🔴 Mantenemos el media query pero coherente */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

@@ -1,0 +1,20 @@
+.PieDiv{
+    background-color: #111;
+    width: 100%;
+    display: flex;
+    margin-top: 40px;
+}
+
+.PieIzquierda{
+    padding: 10px;
+    width: 50%;
+    color: white;
+    text-align: left;
+}
+
+.PieDerecha{
+    padding: 10px;
+    width: 50%;
+    color: white;
+    text-align: right;
+}

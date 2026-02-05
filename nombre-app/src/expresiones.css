@@ -1,0 +1,23 @@
+.expresiones {
+  padding: 20px;
+  color: black;
+}
+
+.expresiones h2 {
+  color: black;
+}
+
+.expresiones p {
+  color: black;
+  margin: 6px 0;
+}
+
+.no-datos {
+  color: #555;
+  font-style: italic;
+}
+
+.promo-texto {
+  font-size: 12px;
+  text-transform: uppercase;
+}
