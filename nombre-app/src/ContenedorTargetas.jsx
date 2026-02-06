@@ -1,29 +1,35 @@
 import './ContenedorTargetas.css';
 import PropTypes from 'prop-types';
-
 import GeometryDash1 from './assets/GeometryDash1.png';
 import CODMobile from './assets/CODMobile.png';
 import BloodStrikeEmma from './assets/BloodStrikeEmma.png';
+import AcercaDe from "./componentes/AcercaDe";
+import Productos from "./componentes/Productos";
+import Galeria from "./componentes/Galeria";
+import Sucursales from "./componentes/Sucursales";
+import Contacto from "./componentes/Contacto";
 
 function ContenedorTargetas({ vista }) {
 
   const vistas = {
     Inicio: <Inicio />,
-    AcercaDe: <AcercaDe />,
+    AcercaDe: <AcercaDe />,   // ❌ ESTE COMPONENTE NO EXISTE
     Productos: <Productos />,
     Galeria: <Galeria />,
     Sucursales: <Sucursales />,
-    Contacto: <Contacto />
-  };
+    Contactos: <Contacto />
+};
 
   return (
-    <div className="ContenedorDiv">
-      {vistas[vista] || <Inicio />}
-    </div>
+<div className="ContenedorDiv">
+  <h1>Vista actual: {vista}</h1>
+  {vistas[vista] || <Inicio />}
+</div>
+
   );
 }
 
-/* ===== VISTAS ===== */
+/* ===== VISTA INICIO ===== */
 
 function Inicio() {
   return (
@@ -48,12 +54,6 @@ function Inicio() {
     </>
   );
 }
-
-function AcercaDe() { return <h2>Acerca de nosotros</h2>; }
-function Productos() { return <h2>Productos</h2>; }
-function Galeria() { return <h2>Galería</h2>; }
-function Sucursales() { return <h2>Sucursales</h2>; }
-function Contacto() { return <h2>Contacto</h2>; }
 
 /* ===== TARJETA ===== */
 

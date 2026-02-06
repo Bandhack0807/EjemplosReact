@@ -11,22 +11,10 @@ function App() {
   return (
     <div>
       <Encabezado cambiarVista={setVista} />
-
-      {/* CONTENEDOR CORRECTO */}
       <ContenedorTargetas vista={vista} />
-
-      {/* PROMOS */}
       <PromosContenedor />
-
-      {/* PIE */}
+      <Expresiones name="Victor Manuel" mostrar={true} />
       <PieComponente />
-
-      {/* EXPRESIONES */}
-      <Expresiones
-        name="Victor Manuel"
-        mostrar={true}
-        mostrarPromos={true}
-      />
     </div>
   );
 }
