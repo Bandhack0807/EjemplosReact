@@ -17,7 +17,7 @@ function ContenedorTargetas({ vista }) {
     Productos: <Productos />,
     Galeria: <Galeria />,
     Sucursales: <Sucursales />,
-    Contactos: <Contacto />
+    Contacto: <Contacto />
 };
 
   return (
