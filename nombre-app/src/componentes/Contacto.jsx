@@ -2,35 +2,25 @@ import "./Contacto.css";
 
 function Contacto() {
   return (
-    <div className="ContactoContenedor">
-      <h2>Contacto</h2>
+    <div className="contacto-contenedor">
+      <form className="contacto-form">
+        <label>Nombre:</label>
+        <input type="text" placeholder="Tu nombre" />
 
-      <ul className="ContactoLista">
-        <li>
-          <strong>Correo:</strong>{" "}
-          <a href="mailto:vicoman0807@gmail.com">
-            vicoman0807@gmail.com
-          </a>
-        </li>
+        <label>Dirección:</label>
+        <input type="text" placeholder="Tu dirección" />
 
-        <li>
-          <strong>WhatsApp:</strong>{" "}
-          <a href="https://wa.me/527761027208" target="_blank" rel="noreferrer">
-            776 102 7208
-          </a>
-        </li>
+        <label>Teléfono:</label>
+        <input type="tel" placeholder="Tu teléfono" />
 
-        <li>
-          <strong>Facebook:</strong>{" "}
-          <a
-            href="https://www.facebook.com/victor.manuel.719290"
-            target="_blank"
-            rel="noreferrer"
-          >
-            facebook.com/victor.manuel
-          </a>
-        </li>
-      </ul>
+        <label>Email:</label>
+        <input type="email" placeholder="ejemplo@correo.com" />
+
+        <label>Mensaje:</label>
+        <textarea placeholder="Escribe aquí..."></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 }

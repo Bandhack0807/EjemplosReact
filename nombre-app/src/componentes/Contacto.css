@@ -1,27 +1,50 @@
-.ContactoContenedor {
-  padding: 30px;
-  color: black;
+.contacto-contenedor {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
 }
 
-.ContactoContenedor h2 {
-  margin-bottom: 15px;
+.contacto-form {
+  width: 420px;
+  background: #f4f4f4;
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 10px;
 }
 
-.ContactoLista {
-  list-style: none;
-  padding: 0;
+.contacto-form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 5px;
 }
 
-.ContactoLista li {
-  margin-bottom: 10px;
-  font-size: 16px;
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
-.ContactoLista a {
-  color: #00e0ff;
-  text-decoration: none;
+.contacto-form textarea {
+  resize: none;
+  height: 80px;
 }
 
-.ContactoLista a:hover {
-  text-decoration: underline;
+.contacto-form button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e57373;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.contacto-form button:hover {
+  background-color: #d32f2f;
 }

@@ -10,7 +10,6 @@ import Sucursales from "./componentes/Sucursales";
 import Contacto from "./componentes/Contacto";
 
 function ContenedorTargetas({ vista }) {
-
   const vistas = {
     Inicio: <Inicio />,
     AcercaDe: <AcercaDe />,   // ❌ ESTE COMPONENTE NO EXISTE
@@ -18,6 +17,7 @@ function ContenedorTargetas({ vista }) {
     Galeria: <Galeria />,
     Sucursales: <Sucursales />,
     Contacto: <Contacto />
+    
 };
 
   return (
