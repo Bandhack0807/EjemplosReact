@@ -11,8 +11,11 @@ function App() {
   return (
     <div>
       <Encabezado cambiarVista={setVista} />
+
       <ContenedorTargetas vista={vista} />
-      <PromosContenedor />
+
+      {vista === "Contacto" && <PromosContenedor />}
+
       <Expresiones name="Victor Manuel" mostrar={true} />
       <PieComponente />
     </div>

@@ -25,3 +25,8 @@
     text-align: center;
     background-color: rgba(0,0,0,0.5);
 }
+.PromoContenedor {
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+}

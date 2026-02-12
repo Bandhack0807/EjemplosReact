@@ -10,15 +10,15 @@ import Sucursales from "./componentes/Sucursales";
 import Contacto from "./componentes/Contacto";
 
 function ContenedorTargetas({ vista }) {
-  const vistas = {
-    Inicio: <Inicio />,
-    AcercaDe: <AcercaDe />,   // ❌ ESTE COMPONENTE NO EXISTE
-    Productos: <Productos />,
-    Galeria: <Galeria />,
-    Sucursales: <Sucursales />,
-    Contacto: <Contacto />
-    
+const vistas = {
+  Inicio: <Inicio />,
+  AcercaDe: <AcercaDe />,
+  Productos: <Productos />,
+  Galeria: <Galeria />,
+  Sucursales: <Sucursales />,
+  Contacto: null
 };
+
 
   return (
 <div className="ContenedorDiv">
