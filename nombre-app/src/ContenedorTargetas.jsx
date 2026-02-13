@@ -31,7 +31,7 @@ function ContenedorTargetas({ vista }) {
 
 function Inicio() {
   return (
-    <>
+    <div className="tarjetas-container">
       <TarjetaComponent
         imagen={GeometryDash1}
         titulo="Geometry Dash"
@@ -49,9 +49,10 @@ function Inicio() {
         titulo="BloodStrike"
         texto="Batallas rápidas estilo battle royale en móvil."
       />
-    </>
+    </div>
   );
 }
+
 
 /* ===== TARJETA ===== */
 

@@ -1,36 +1,35 @@
-.ContenedorDiv{
-    padding-top: 20px;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 20px;
+.ContenedorDiv {
+  padding-top: 20px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.TarjetaDiv{
-    width: 300px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, 
-                rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    text-align: center;
-    margin: 0 auto;
-    background-color: white; /* no cambia diseño, asegura contraste */
+/* 🔥 CONTENEDOR DE TARJETAS */
+.tarjetas-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
 }
 
-.TarjetaDiv img{
-    width: 90%;
-    margin: 0 auto;
+/* 🔥 TARJETA */
+.TarjetaDiv {
+  width: 300px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 10px;
+  text-align: center;
+  background-color: white;
 }
 
-.TarjetaDiv p{
-    text-align: justify;
-    padding: 10px;
-    color: #000; /* ✅ TEXTO NEGRO */
-}
-
-.TarjetaDiv h3{
-    color: #000; /* ✅ TITULO NEGRO */
+.TarjetaDiv img {
+  width: 100%;
+  height: 180px;      /* 🔥 MISMO ALTO PARA TODAS */
+  object-fit: cover; /* 🔥 RECORTA SIN DEFORMAR */
+  border-radius: 6px;
 }
