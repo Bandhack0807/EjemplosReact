@@ -1,4 +1,4 @@
-import Mapa from "./Mapa";
+import Mapa from "./componentes/Mapa";
 import "./PromosContenedor.css";
 
 function PromosContenedor() {

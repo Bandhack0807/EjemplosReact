@@ -10,22 +10,20 @@ import Sucursales from "./componentes/Sucursales";
 import Contacto from "./componentes/Contacto";
 
 function ContenedorTargetas({ vista }) {
-const vistas = {
-  Inicio: <Inicio />,
-  AcercaDe: <AcercaDe />,
-  Productos: <Productos />,
-  Galeria: <Galeria />,
-  Sucursales: <Sucursales />,
-  Contacto: null
-};
-
+  const vistas = {
+    Inicio: <Inicio />,
+    AcercaDe: <AcercaDe />,
+    Productos: <Productos />,
+    Galeria: <Galeria />,
+    Sucursales: <Sucursales />,
+    Contacto: <Contacto />
+  };
 
   return (
-<div className="ContenedorDiv">
-  <h1>Vista actual: {vista}</h1>
-  {vistas[vista] || <Inicio />}
-</div>
-
+    <div className="ContenedorDiv" style={{ background: "#f5f5f5" }}>
+      <h1>Vista actual: {vista}</h1>
+      {vistas[vista] || <Inicio />}
+    </div>
   );
 }
 
