@@ -1,16 +1,14 @@
-.sucursales {
+.sucursales-contenedor {
   padding: 20px;
 }
 
-.lista-sucursales {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+.sucursal {
+  margin-bottom: 30px;
 }
 
-.sucursal {
-  width: 300px;
-  border: 1px solid #ccc;
-  padding: 15px;
+.mapa-sucursal {
+  width: 100%;
+  height: 250px; /* 👈 NO SE CAMBIA EL TAMAÑO */
   border-radius: 10px;
+  overflow: hidden;
 }

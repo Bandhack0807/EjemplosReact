@@ -1,26 +1,35 @@
 import "./Contacto.css";
+import MapaGeolocalizacion from "../MapaGeolocalizacion";
 
 function Contacto() {
   return (
     <div className="contacto-contenedor">
-      <form className="contacto-form">
-        <label>Nombre:</label>
-        <input type="text" placeholder="Tu nombre" />
+      <div className="contacto-wrapper">
+        <form className="contacto-form">
+          <h2>Contáctanos</h2>
 
-        <label>Dirección:</label>
-        <input type="text" placeholder="Tu dirección" />
+          <label>Nombre:</label>
+          <input type="text" placeholder="Tu nombre" />
 
-        <label>Teléfono:</label>
-        <input type="tel" placeholder="Tu teléfono" />
+          <label>Dirección:</label>
+          <input type="text" placeholder="Tu dirección" />
 
-        <label>Email:</label>
-        <input type="email" placeholder="ejemplo@correo.com" />
+          <label>Teléfono:</label>
+          <input type="tel" placeholder="Tu teléfono" />
 
-        <label>Mensaje:</label>
-        <textarea placeholder="Escribe aquí..."></textarea>
+          <label>Email:</label>
+          <input type="email" placeholder="ejemplo@correo.com" />
 
-        <button type="submit">Enviar</button>
-      </form>
+          <label>Mensaje:</label>
+          <textarea placeholder="Escribe aquí..." />
+
+          <button type="submit">Enviar</button>
+        </form>
+
+        <div className="mapa-contacto">
+          <MapaGeolocalizacion />
+        </div>
+      </div>
     </div>
   );
 }

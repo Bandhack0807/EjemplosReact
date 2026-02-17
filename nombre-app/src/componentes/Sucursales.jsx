@@ -1,51 +1,45 @@
-import Mapa from "./Mapa";
-import "./Sucursales.css";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-function Sucursales() {
-  const sedes = [
-    {
-      id: 1,
-      ciudad: "CDMX",
-      direccion: "Av. Reforma 222, Juárez",
-      tel: "+52 55 1234 5678",
-      lat: 19.432608,
-      lng: -99.133209,
-    },
-    {
-      id: 2,
-      ciudad: "Monterrey",
-      direccion: "San Pedro Garza García, NL",
-      tel: "+52 81 8765 4321",
-      lat: 25.686614,
-      lng: -100.316113,
-    },
-    {
-      id: 3,
-      ciudad: "Guadalajara",
-      direccion: "Colonia Americana, Jal",
-      tel: "+52 33 4455 6677",
-      lat: 20.659698,
-      lng: -103.349609,
-    },
-  ];
+const contenedorMapa = {
+  width: "100%",
+  height: "200px",
+  borderRadius: "10px",
+};
 
+function MapaSucursal({ lat, lng }) {
   return (
-    <div className="sucursales">
-      <h2>Nuestras Sedes</h2>
-
-      <div className="lista-sucursales">
-        {sedes.map((sede) => (
-          <div className="sucursal" key={sede.id}>
-            <h3>{sede.ciudad}</h3>
-            <p>📍 {sede.direccion}</p>
-            <p>📞 {sede.tel}</p>
-
-            <Mapa lat={sede.lat} lng={sede.lng} />
-          </div>
-        ))}
-      </div>
-    </div>
+    <GoogleMap
+      mapContainerStyle={contenedorMapa}
+      center={{ lat, lng }}
+      zoom={15}
+    >
+      {/* 🔴 PIN ROJO */}
+      <Marker position={{ lat, lng }} />
+    </GoogleMap>
   );
 }
 
-export default Sucursales;
+export default function Sucursales() {
+  return (
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+      <div className="lista-sucursales">
+
+        <div className="sucursal">
+          <h3>CDMX</h3>
+          <MapaSucursal lat={19.432608} lng={-99.133209} />
+        </div>
+
+        <div className="sucursal">
+          <h3>Monterrey</h3>
+          <MapaSucursal lat={25.686614} lng={-100.316113} />
+        </div>
+
+        <div className="sucursal">
+          <h3>Guadalajara</h3>
+          <MapaSucursal lat={20.659698} lng={-103.349609} />
+        </div>
+
+      </div>
+    </LoadScript>
+  );
+}

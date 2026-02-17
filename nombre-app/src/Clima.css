@@ -1,0 +1,52 @@
+.clima {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(
+    145deg,
+    #1a1a1a,
+    #0f0f0f
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  min-width: 130px;
+
+  color: #f1f1f1;
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto sutil al pasar el mouse */
+.clima:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
+}
+
+.clima .ciudad {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.clima .temp {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4fc3f7; /* azul frío elegante */
+  margin: 2px 0;
+}
+
+.clima .desc {
+  font-size: 11px;
+  text-transform: capitalize;
+  opacity: 0.85;
+}
+
+/* Texto de carga */
+.cargando {
+  font-size: 11px;
+  opacity: 0.6;
+}

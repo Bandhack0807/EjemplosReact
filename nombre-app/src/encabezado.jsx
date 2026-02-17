@@ -2,6 +2,7 @@ import "./encabezado.css";
 import logo from "./assets/GeometryDashLogo.png";
 import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import PropTypes from "prop-types";
+import Clima from "./Clima";
 
 function Encabezado({ cambiarVista }) {
   return (
@@ -38,18 +39,23 @@ function Menu({ cambiarVista }) {
 
 function Redes() {
   return (
-    <div className="redes">
-      <a href="#"><FaFacebookF /></a>
-      <a href="#"><FaWhatsapp /></a>
-      <a href="#"><FaYoutube /></a>
-      <a href="#"><FaInstagram /></a>
-      <a href="#"><FaLinkedinIn /></a>
+    <div className="redes-clima">
+      <div className="redes">
+        <a href="#"><FaFacebookF /></a>
+        <a href="#"><FaWhatsapp /></a>
+        <a href="#"><FaYoutube /></a>
+        <a href="#"><FaInstagram /></a>
+        <a href="#"><FaLinkedinIn /></a>
+      </div>
+
+      {/* 👇 Clima debajo de redes */}
+      <Clima />
     </div>
   );
 }
 
 Encabezado.propTypes = {
-  cambiarVista: PropTypes.func.isRequired
+  cambiarVista: PropTypes.func.isRequired,
 };
 
 export default Encabezado;
