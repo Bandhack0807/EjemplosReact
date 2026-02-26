@@ -4,7 +4,6 @@ import GeometryDash1 from "./assets/GeometryDash1.png";
 import CODMobile from "./assets/CODMobile.png";
 import BloodStrikeEmma from "./assets/BloodStrikeEmma.png";
 import Carrito from "./componentes/Carrito";
-
 import AcercaDe from "./componentes/AcercaDe";
 import Productos from "./componentes/Productos";
 import Galeria from "./componentes/Galeria";

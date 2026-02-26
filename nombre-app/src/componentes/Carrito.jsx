@@ -1,47 +1,116 @@
+import { useEffect, useState } from "react";
 import "./Carrito.css";
+import {
+  obtenerCarritos,
+  guardarCarrito,
+  eliminarCarrito,
+} from "../Services/registroCarritos";
 
 function Carrito() {
-  const carritos = [
-    {
-      id: 1,
-      fecha: "2020-03-02T00:00:00.000Z",
-      productos: [
-        { nombre: "Producto #1", cantidad: 4 },
-        { nombre: "Producto #2", cantidad: 1 },
-        { nombre: "Producto #3", cantidad: 6 },
-      ],
-    },
-    {
-      id: 2,
-      fecha: "2020-01-02T00:00:00.000Z",
-      productos: [
-        { nombre: "Producto #2", cantidad: 4 },
-        { nombre: "Producto #1", cantidad: 10 },
-        { nombre: "Producto #5", cantidad: 2 },
-      ],
-    },
-  ];
+  const [carritos, setCarritos] = useState([]);
+  const [productos, setProductos] = useState([]);
+  const [productoNombre, setProductoNombre] = useState("");
+  const [cantidad, setCantidad] = useState("");
+
+  useEffect(() => {
+    setCarritos(obtenerCarritos());
+  }, []);
+
+  const agregarProducto = () => {
+    if (!productoNombre || !cantidad) return;
+
+    setProductos([
+      ...productos,
+      { nombre: productoNombre, cantidad },
+    ]);
+
+    setProductoNombre("");
+    setCantidad("");
+  };
+
+  const crearCarrito = () => {
+    if (productos.length === 0) return;
+
+    const nuevoCarrito = {
+      fecha: new Date().toISOString(),
+      productos,
+    };
+
+    guardarCarrito(nuevoCarrito);
+    setCarritos(obtenerCarritos());
+    setProductos([]);
+  };
+
+  const borrarCarrito = (id) => {
+    eliminarCarrito(id);
+    setCarritos(obtenerCarritos());
+  };
 
   return (
-    <div className="carrito-contenedor">
-      <h2>Carrito de compras</h2>
+    <div className="carrito-container">
+      <h2>Crear Carrito</h2>
 
-      <div className="carrito-grid">
-        {carritos.map((carrito) => (
-          <div key={carrito.id} className="carrito-card">
-            <span className="carrito-id">{carrito.id}</span>
-            <p className="carrito-fecha">{carrito.fecha}</p>
+      {/* FORMULARIO */}
+      <div className="carrito-form">
+        <input
+          type="text"
+          placeholder="Nombre del producto"
+          value={productoNombre}
+          onChange={(e) => setProductoNombre(e.target.value)}
+        />
 
-            <h4>Productos</h4>
+        <input
+          type="number"
+          placeholder="Cantidad"
+          value={cantidad}
+          onChange={(e) => setCantidad(e.target.value)}
+        />
+
+        <button onClick={agregarProducto}>Agregar Producto</button>
+      </div>
+
+      {productos.length > 0 && (
+        <div className="productos-preview">
+          <h4>Productos en este carrito:</h4>
+          <ul>
+            {productos.map((p, index) => (
+              <li key={index}>
+                {p.nombre} — Cantidad {p.cantidad}
+              </li>
+            ))}
+          </ul>
+
+          <button className="btn-crear" onClick={crearCarrito}>
+            Crear Carrito
+          </button>
+        </div>
+      )}
+
+      <hr />
+
+      {/* LISTA DE CARRITOS */}
+      <h2>Carritos creados</h2>
+
+      <div className="carritos-grid">
+        {carritos.map((c, index) => (
+          <div key={c.id} className="carrito-card">
+            <h3>Carrito #{index + 1}</h3>
+            <p className="fecha">{c.fecha}</p>
+
             <ul>
-              {carrito.productos.map((p, index) => (
-                <li key={index}>
+              {c.productos.map((p, i) => (
+                <li key={i}>
                   {p.nombre} — Cantidad {p.cantidad}
                 </li>
               ))}
             </ul>
 
-            <button className="btn-comprar">Comprar</button>
+            <button
+              className="btn-eliminar"
+              onClick={() => borrarCarrito(c.id)}
+            >
+              Eliminar
+            </button>
           </div>
         ))}
       </div>
