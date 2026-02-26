@@ -1,0 +1,39 @@
+.registrar-producto {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.registrar-producto h2 {
+  margin-bottom: 20px;
+  color: #a94442;
+}
+
+.registrar-producto form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.registrar-producto input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.registrar-producto button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #e57373;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.registrar-producto button:hover {
+  background: #d32f2f;
+}

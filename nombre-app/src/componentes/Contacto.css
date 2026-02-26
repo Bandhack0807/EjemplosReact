@@ -1,12 +1,8 @@
 .contacto-contenedor {
-  display: flex;
-  justify-content: center;
-  margin: 60px 0;
-  width: 100%;
+  padding: 40px;
 }
 
 .contacto-wrapper {
-  width: 85%;
   display: flex;
   gap: 40px;
   align-items: flex-start;
@@ -14,11 +10,11 @@
 
 /* FORMULARIO */
 .contacto-form {
-  width: 45%;
-  background: #f4f4f4;
-  padding: 30px;
+  background: #fff;
+  padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 450px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .contacto-form h2 {
@@ -28,44 +24,62 @@
 
 .contacto-form label {
   display: block;
+  margin-top: 10px;
   font-weight: bold;
-  margin-top: 12px;
 }
 
 .contacto-form input,
 .contacto-form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   margin-top: 5px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
-.contacto-form textarea {
-  resize: none;
-  height: 90px;
-}
-
 .contacto-form button {
-  width: 100%;
   margin-top: 20px;
-  padding: 12px;
-  background-color: #e57373;
+  width: 100%;
+  padding: 10px;
+  background: #e74c3c;
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
 }
 
 .contacto-form button:hover {
-  background-color: #d32f2f;
+  background: #c0392b;
 }
 
 /* MAPA */
 .mapa-contacto {
-  width: 55%;
+  width: 500px;
   height: 350px;
-  border-radius: 10px;
-  overflow: hidden;
+}
+
+/* TABLA */
+.tabla-usuarios {
+  margin-top: 50px;
+}
+
+.tabla-usuarios h2 {
+  margin-bottom: 15px;
+}
+
+.tabla-usuarios table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.tabla-usuarios th {
+  background: #111;
+  color: white;
 }

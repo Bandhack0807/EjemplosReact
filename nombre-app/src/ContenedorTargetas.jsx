@@ -1,23 +1,28 @@
-import './ContenedorTargetas.css';
-import PropTypes from 'prop-types';
-import GeometryDash1 from './assets/GeometryDash1.png';
-import CODMobile from './assets/CODMobile.png';
-import BloodStrikeEmma from './assets/BloodStrikeEmma.png';
+import "./ContenedorTargetas.css";
+import PropTypes from "prop-types";
+import GeometryDash1 from "./assets/GeometryDash1.png";
+import CODMobile from "./assets/CODMobile.png";
+import BloodStrikeEmma from "./assets/BloodStrikeEmma.png";
+import Carrito from "./componentes/Carrito";
+
 import AcercaDe from "./componentes/AcercaDe";
 import Productos from "./componentes/Productos";
 import Galeria from "./componentes/Galeria";
 import Sucursales from "./componentes/Sucursales";
 import Contacto from "./componentes/Contacto";
+import Usuarios from "./componentes/Usuarios"; // 🆕 IMPORTANTE
 
 function ContenedorTargetas({ vista }) {
-  const vistas = {
-    Inicio: <Inicio />,
-    AcercaDe: <AcercaDe />,
-    Productos: <Productos />,
-    Galeria: <Galeria />,
-    Sucursales: <Sucursales />,
-    Contacto: <Contacto />
-  };
+const vistas = {
+  Inicio: <Inicio />,
+  AcercaDe: <AcercaDe />,
+  Usuarios: <Usuarios />,
+  Productos: <Productos />,
+  Carrito: <Carrito />, // 🆕
+  Galeria: <Galeria />,
+  Sucursales: <Sucursales />,
+  Contacto: <Contacto />
+};
 
   return (
     <div className="ContenedorDiv" style={{ background: "#f5f5f5" }}>
@@ -52,7 +57,6 @@ function Inicio() {
     </div>
   );
 }
-
 
 /* ===== TARJETA ===== */
 

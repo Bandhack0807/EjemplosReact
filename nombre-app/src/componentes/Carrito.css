@@ -1,0 +1,54 @@
+.carrito-contenedor {
+  padding: 40px;
+}
+
+.carrito-contenedor h2 {
+  margin-bottom: 30px;
+  color: #8a6d3b;
+}
+
+.carrito-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.carrito-card {
+  width: 260px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carrito-id {
+  font-weight: bold;
+}
+
+.carrito-fecha {
+  color: #a94442;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.carrito-card h4 {
+  margin-top: 10px;
+}
+
+.carrito-card ul {
+  padding-left: 18px;
+}
+
+.btn-comprar {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: #e57373;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-comprar:hover {
+  background: #d32f2f;
+}
