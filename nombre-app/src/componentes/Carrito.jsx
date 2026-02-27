@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Carrito.css";
-import {
-  obtenerCarritos,
-  guardarCarrito,
-  eliminarCarrito,
-} from "../Services/registroCarritos";
+import {obtenerCarritos, guardarCarrito, eliminarCarrito,} from "../Services/registroCarritos";
 
 function Carrito() {
   const [carritos, setCarritos] = useState([]);
@@ -12,26 +8,35 @@ function Carrito() {
   const [productoNombre, setProductoNombre] = useState("");
   const [cantidad, setCantidad] = useState("");
 
+  //Cargar carritos al iniciar
   useEffect(() => {
     setCarritos(obtenerCarritos());
   }, []);
 
+  //Agregar producto al carrito temporal
   const agregarProducto = () => {
     if (!productoNombre || !cantidad) return;
 
-    setProductos([
-      ...productos,
-      { nombre: productoNombre, cantidad },
-    ]);
+    const nuevoProducto = {
+      nombre: productoNombre,
+      cantidad,
+    };
+
+    setProductos([...productos, nuevoProducto]);
+
+    //MENSAJE EN CONSOLA
+    console.log("Producto agregado al carrito:", nuevoProducto);
 
     setProductoNombre("");
     setCantidad("");
   };
 
+  //Crear carrito
   const crearCarrito = () => {
     if (productos.length === 0) return;
 
     const nuevoCarrito = {
+      id: Date.now(), // ID único
       fecha: new Date().toISOString(),
       productos,
     };
@@ -39,18 +44,25 @@ function Carrito() {
     guardarCarrito(nuevoCarrito);
     setCarritos(obtenerCarritos());
     setProductos([]);
+
+    //MENSAJE EN CONSOLA
+    console.log("Carrito creado correctamente:", nuevoCarrito);
   };
 
+  //Eliminar carrito
   const borrarCarrito = (id) => {
     eliminarCarrito(id);
     setCarritos(obtenerCarritos());
+
+    //MENSAJE EN CONSOLA
+    console.log("Carrito eliminado con ID:", id);
   };
 
   return (
     <div className="carrito-container">
       <h2>Crear Carrito</h2>
 
-      {/* FORMULARIO */}
+      {/*FORMULARIO */}
       <div className="carrito-form">
         <input
           type="text"
@@ -69,6 +81,7 @@ function Carrito() {
         <button onClick={agregarProducto}>Agregar Producto</button>
       </div>
 
+      {/*PREVIEW DEL CARRITO */}
       {productos.length > 0 && (
         <div className="productos-preview">
           <h4>Productos en este carrito:</h4>
@@ -88,7 +101,7 @@ function Carrito() {
 
       <hr />
 
-      {/* LISTA DE CARRITOS */}
+      {/*LISTA DE CARRITOS */}
       <h2>Carritos creados</h2>
 
       <div className="carritos-grid">

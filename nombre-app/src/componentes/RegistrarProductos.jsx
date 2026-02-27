@@ -39,7 +39,6 @@ function RegistrarProductos() {
   return (
     <div className="registrar-producto">
       <h2>Registrar Producto</h2>
-
       <form onSubmit={handleSubmit}>
         <input
           type="text"
