@@ -40,8 +40,6 @@ function Productos() {
 
   return (
     <div className="productos-container">
-      <h2 className="titulo">Nuestro Catálogo Tecnológico</h2>
-
       <div className="productos-grid">
         {productos.map((producto) => (
           <div key={producto.id} className="producto-card">

@@ -18,17 +18,17 @@ function Usuarios() {
     correo: "",
   });
 
-  // 🔄 Cargar usuarios al entrar
+  // Cargar usuarios al entrar
   useEffect(() => {
     setUsuarios(obtenerUsuarios());
   }, []);
 
-  // ✍️ Manejo de inputs
+  // Manejo de inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 📩 Guardar / Editar
+  //Guardar / Editar
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,7 +53,7 @@ function Usuarios() {
     });
   };
 
-  // ✏️ Editar
+  //Editar
   const editarUsuario = (usuario) => {
     setFormData(usuario);
     setEditandoId(usuario.id);
