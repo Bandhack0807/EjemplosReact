@@ -11,11 +11,10 @@ function RegistrarUsuarios({
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
 
-  // 🔄 Cargar datos si estamos editando
   useEffect(() => {
     if (usuarioEditando) {
-      setUsername(usuarioEditando.username || "");
-      setMail(usuarioEditando.email || "");
+      setUsername(usuarioEditando.username);
+      setMail(usuarioEditando.email);
       setPassword("");
     } else {
       resetForm();
@@ -37,20 +36,27 @@ function RegistrarUsuarios({
       password,
     };
 
+    console.log("Enviando datos:", nuevoUsuario);
+
     try {
       if (usuarioEditando) {
-        // ✏️ ACTUALIZAR
+        //ACTUALIZAR USUARIO
         const respuesta = await api.put(
           `/users/${usuarioEditando.id}`,
           nuevoUsuario
         );
-        console.log("Usuario Actualizado:", respuesta.data);
+
+        console.log("Usuario actualizado:", respuesta.data);
         alert("¡Usuario actualizado con éxito!");
+
         if (limpiarSeleccion) limpiarSeleccion();
       } else {
-        // ➕ REGISTRAR
+        //REGISTRAR USUARIO
         const respuesta = await api.post("/users", nuevoUsuario);
-        console.log("Usuario Registrado:", respuesta.data);
+
+        console.log("Usuario registrado correctamente:");
+        console.log(respuesta.data);
+
         alert("¡Usuario guardado con éxito!");
       }
 
@@ -60,14 +66,16 @@ function RegistrarUsuarios({
         onActualizacionExitosa();
       }
     } catch (error) {
-      console.error("Error al registrar:", error);
+      console.error("Error al registrar usuario:", error);
       alert("¡Error al procesar la solicitud!");
     }
   };
 
   return (
     <div className="form-container">
-      <h2>{usuarioEditando ? "Editar Usuario" : "Registrar Usuario"}</h2>
+      <h2>
+        {usuarioEditando ? "Editar Usuario" : "Registrar Usuario"}
+      </h2>
 
       <form onSubmit={handleSubmit} className="contact-form">
         <input
@@ -91,12 +99,18 @@ function RegistrarUsuarios({
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required={!usuarioEditando}
+          required
         />
 
         <button type="submit">
-          {usuarioEditando ? "Actualizar" : "Guardar"}
+          {usuarioEditando ? "Actualizar Usuario" : "Guardar Usuario"}
         </button>
+
+        {usuarioEditando && (
+          <button type="button" onClick={limpiarSeleccion}>
+            Cancelar
+          </button>
+        )}
       </form>
     </div>
   );

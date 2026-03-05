@@ -18,9 +18,11 @@ function Usuarios() {
     correo: "",
   });
 
-  // Cargar usuarios al entrar
+  // Cargar usuarios
   useEffect(() => {
-    setUsuarios(obtenerUsuarios());
+    const datos = obtenerUsuarios();
+    console.log("Usuarios cargados:", datos);
+    setUsuarios(datos);
   }, []);
 
   // Manejo de inputs
@@ -28,20 +30,33 @@ function Usuarios() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //Guardar / Editar
+  // Guardar / Editar
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("Datos enviados desde el formulario:", formData);
 
     if (editandoId) {
       const nuevos = usuarios.map((u) =>
         u.id === editandoId ? { ...formData, id: editandoId } : u
       );
+
       localStorage.setItem("usuarios_registrados", JSON.stringify(nuevos));
+
+      console.log("Usuario actualizado:", formData);
+
       setUsuarios(nuevos);
       setEditandoId(null);
+
     } else {
       guardarUsuario(formData);
-      setUsuarios(obtenerUsuarios());
+
+      console.log("Usuario registrado correctamente:", formData);
+
+      const nuevosUsuarios = obtenerUsuarios();
+      console.log("Lista actualizada:", nuevosUsuarios);
+
+      setUsuarios(nuevosUsuarios);
     }
 
     setFormData({
@@ -53,23 +68,29 @@ function Usuarios() {
     });
   };
 
-  //Editar
+  // Editar
   const editarUsuario = (usuario) => {
+    console.log("Editando usuario:", usuario);
     setFormData(usuario);
     setEditandoId(usuario.id);
   };
 
-  // 🗑️ Eliminar
+  // Eliminar
   const borrarUsuario = (id) => {
+    console.log("Eliminando usuario con id:", id);
+
     eliminarUsuario(id);
-    setUsuarios(obtenerUsuarios());
+
+    const nuevos = obtenerUsuarios();
+    console.log("Lista después de eliminar:", nuevos);
+
+    setUsuarios(nuevos);
   };
 
   return (
     <div className="usuarios-container">
       <h2>Usuarios Registrados</h2>
 
-      {/* 📋 FORMULARIO */}
       <form className="usuarios-form" onSubmit={handleSubmit}>
         <input name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
         <input name="apellidos" placeholder="Apellidos" value={formData.apellidos} onChange={handleChange} required />
@@ -82,7 +103,6 @@ function Usuarios() {
         </button>
       </form>
 
-      {/* 📊 TABLA */}
       <table className="usuarios-tabla">
         <thead>
           <tr>
@@ -95,6 +115,7 @@ function Usuarios() {
             <th>Eliminar</th>
           </tr>
         </thead>
+
         <tbody>
           {usuarios.map((u) => (
             <tr key={u.id}>
@@ -103,11 +124,17 @@ function Usuarios() {
               <td>{u.direccion}</td>
               <td>{u.telefono}</td>
               <td>{u.correo}</td>
+
               <td>
-                <button className="btn-editar" onClick={() => editarUsuario(u)}>Editar</button>
+                <button className="btn-editar" onClick={() => editarUsuario(u)}>
+                  Editar
+                </button>
               </td>
+
               <td>
-                <button className="btn-eliminar" onClick={() => borrarUsuario(u.id)}>Eliminar</button>
+                <button className="btn-eliminar" onClick={() => borrarUsuario(u.id)}>
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

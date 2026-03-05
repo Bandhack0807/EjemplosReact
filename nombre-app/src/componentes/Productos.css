@@ -64,3 +64,36 @@
   text-align: center;
   font-size: 18px;
 }
+
+.botones-producto{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+}
+
+.btn-actualizar{
+background:#f1c40f;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn-actualizar:hover{
+background:#f39c12;
+}
+
+.btn-eliminar{
+background:#e74c3c;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+color:white;
+cursor:pointer;
+}
+
+.btn-eliminar:hover{
+background:#c0392b;
+}
