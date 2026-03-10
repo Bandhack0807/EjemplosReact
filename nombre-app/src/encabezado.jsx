@@ -34,6 +34,7 @@ function Menu() {
         <li><Link to="/contacto">Contacto</Link></li>
         <li><Link to="/usuarios">Usuarios</Link></li>
         <li><Link to="/carrito">Carrito</Link></li>
+        <li><Link to="/categorias">Categorías</Link></li>
       </ul>
     </nav>
   );

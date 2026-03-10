@@ -18,6 +18,7 @@ import Galeria from "./componentes/Galeria";
 import Sucursales from "./componentes/Sucursales";
 import Contacto from "./componentes/Contacto";
 import Carrito from "./componentes/Carrito";
+import Categorias from "./componentes/Categorias";
 
 function Inicio() {
   return (
@@ -55,6 +56,8 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
 
         <Route path="/carrito" element={<Carrito />} />
+
+        <Route path="/categorias" element={<Categorias />} />
 
         <Route
           path="/usuarios"
