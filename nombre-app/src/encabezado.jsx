@@ -1,14 +1,14 @@
 import "./encabezado.css";
 import logo from "./assets/GeometryDashLogo.png";
 import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Clima from "./Clima";
 
-function Encabezado({ cambiarVista }) {
+function Encabezado() {
   return (
     <header className="encabezado">
       <Logotipo />
-      <Menu cambiarVista={cambiarVista} />
+      <Menu />
       <Redes />
     </header>
   );
@@ -22,18 +22,18 @@ function Logotipo() {
   );
 }
 
-function Menu({ cambiarVista }) {
+function Menu() {
   return (
     <nav className="menu">
       <ul>
-        <li onClick={() => cambiarVista("Inicio")}>Inicio</li>
-        <li onClick={() => cambiarVista("AcercaDe")}>Acerca de</li>
-        <li onClick={() => cambiarVista("Productos")}>Productos</li>
-        <li onClick={() => cambiarVista("Galeria")}>Galería</li>
-        <li onClick={() => cambiarVista("Sucursales")}>Sucursales</li>
-        <li onClick={() => cambiarVista("Contacto")}>Contacto</li>
-        <li onClick={() => cambiarVista("Usuarios")}>Usuarios</li>
-        <li onClick={() => cambiarVista("Carrito")}>Carrito</li>
+        <li><Link to="/">Inicio</Link></li>
+        <li><Link to="/acerca">Acerca de</Link></li>
+        <li><Link to="/productos">Productos</Link></li>
+        <li><Link to="/galeria">Galería</Link></li>
+        <li><Link to="/sucursales">Sucursales</Link></li>
+        <li><Link to="/contacto">Contacto</Link></li>
+        <li><Link to="/usuarios">Usuarios</Link></li>
+        <li><Link to="/carrito">Carrito</Link></li>
       </ul>
     </nav>
   );
@@ -54,9 +54,5 @@ function Redes() {
     </div>
   );
 }
-
-Encabezado.propTypes = {
-  cambiarVista: PropTypes.func.isRequired,
-};
 
 export default Encabezado;

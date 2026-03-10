@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import "./Carrito.css";
-import {obtenerCarritos, guardarCarrito, eliminarCarrito,} from "../Services/registroCarritos";
+import {
+  obtenerCarritos,
+  guardarCarrito,
+  eliminarCarrito,
+} from "../Services/registroCarritos";
 
 function Carrito() {
   const [carritos, setCarritos] = useState([]);
   const [productos, setProductos] = useState([]);
   const [productoNombre, setProductoNombre] = useState("");
   const [cantidad, setCantidad] = useState("");
+  const [carritoEditando, setCarritoEditando] = useState(null);
 
   //Cargar carritos al iniciar
   useEffect(() => {
@@ -24,7 +29,6 @@ function Carrito() {
 
     setProductos([...productos, nuevoProducto]);
 
-    //MENSAJE EN CONSOLA
     console.log("Producto agregado al carrito:", nuevoProducto);
 
     setProductoNombre("");
@@ -36,7 +40,7 @@ function Carrito() {
     if (productos.length === 0) return;
 
     const nuevoCarrito = {
-      id: Date.now(), // ID único
+      id: Date.now(),
       fecha: new Date().toISOString(),
       productos,
     };
@@ -45,7 +49,6 @@ function Carrito() {
     setCarritos(obtenerCarritos());
     setProductos([]);
 
-    //MENSAJE EN CONSOLA
     console.log("Carrito creado correctamente:", nuevoCarrito);
   };
 
@@ -54,8 +57,32 @@ function Carrito() {
     eliminarCarrito(id);
     setCarritos(obtenerCarritos());
 
-    //MENSAJE EN CONSOLA
     console.log("Carrito eliminado con ID:", id);
+  };
+
+  //EDITAR CARRITO
+  const editarCarrito = (carrito) => {
+    setCarritoEditando(carrito.id);
+    setProductos(carrito.productos);
+
+    console.log("Editando carrito:", carrito);
+  };
+
+  //ACTUALIZAR CARRITO
+  const actualizarCarrito = () => {
+    const carritosActualizados = carritos.map((c) =>
+      c.id === carritoEditando
+        ? { ...c, productos }
+        : c
+    );
+
+    localStorage.setItem("carritos", JSON.stringify(carritosActualizados));
+
+    setCarritos(carritosActualizados);
+    setProductos([]);
+    setCarritoEditando(null);
+
+    console.log("Carrito actualizado correctamente");
   };
 
   return (
@@ -78,13 +105,16 @@ function Carrito() {
           onChange={(e) => setCantidad(e.target.value)}
         />
 
-        <button onClick={agregarProducto}>Agregar Producto</button>
+        <button onClick={agregarProducto}>
+          Agregar Producto
+        </button>
       </div>
 
-      {/*PREVIEW DEL CARRITO */}
+      {/*PREVIEW */}
       {productos.length > 0 && (
         <div className="productos-preview">
           <h4>Productos en este carrito:</h4>
+
           <ul>
             {productos.map((p, index) => (
               <li key={index}>
@@ -93,9 +123,15 @@ function Carrito() {
             ))}
           </ul>
 
-          <button className="btn-crear" onClick={crearCarrito}>
-            Crear Carrito
-          </button>
+          {carritoEditando ? (
+            <button className="btn-crear" onClick={actualizarCarrito}>
+              Actualizar Carrito
+            </button>
+          ) : (
+            <button className="btn-crear" onClick={crearCarrito}>
+              Crear Carrito
+            </button>
+          )}
         </div>
       )}
 
@@ -118,12 +154,26 @@ function Carrito() {
               ))}
             </ul>
 
-            <button
-              className="btn-eliminar"
-              onClick={() => borrarCarrito(c.id)}
-            >
-              Eliminar
-            </button>
+            <div className="botones-carrito">
+
+              {/* EDITAR */}
+              <button
+                className="btn-editar"
+                onClick={() => editarCarrito(c)}
+              >
+                Editar
+              </button>
+
+              {/* ELIMINAR */}
+              <button
+                className="btn-eliminar"
+                onClick={() => borrarCarrito(c.id)}
+              >
+                Eliminar
+              </button>
+
+            </div>
+
           </div>
         ))}
       </div>

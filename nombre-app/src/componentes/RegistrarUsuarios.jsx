@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../Services/Api";
-import "./RegistrarUsuarios.css";
+import "./RegistrarUsuario.css";
 
 function RegistrarUsuarios({
   usuarioEditando,

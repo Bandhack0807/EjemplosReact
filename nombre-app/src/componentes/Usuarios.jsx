@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Usuarios.css";
-import {
-  obtenerUsuarios,
-  guardarUsuario,
-  eliminarUsuario,
-} from "../Services/registroUsuarios";
+import {obtenerUsuarios, guardarUsuario, eliminarUsuario,} from "../Services/registroUsuarios";
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);

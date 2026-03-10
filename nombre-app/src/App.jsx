@@ -1,23 +1,82 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./componentes/Navbar";
+import ProtectedRoute from "./componentes/ProtectedRoute";
+import Login from "./componentes/Login";
+import Usuarios from "./componentes/Usuarios";
+import RegistrarUsuarios from "./componentes/RegistrarUsuarios";
+
 import Encabezado from "./encabezado";
 import ContenedorTargetas from "./ContenedorTargetas";
 import PromosContenedor from "./PromosContenedor";
 import PieComponente from "./PieComponente";
 import Expresiones from "./expresiones";
 
-function App() {
-  console.log("APP SE ESTÁ RENDERIZANDO");
+import AcercaDe from "./componentes/AcercaDe";
+import Productos from "./componentes/Productos";
+import Galeria from "./componentes/Galeria";
+import Sucursales from "./componentes/Sucursales";
+import Contacto from "./componentes/Contacto";
+import Carrito from "./componentes/Carrito";
 
-  const [vista, setVista] = useState("Inicio");
-
+function Inicio() {
   return (
-    <div>
-      <Encabezado cambiarVista={setVista} />
-      <ContenedorTargetas vista={vista} />
-      {vista === "Contacto" && <PromosContenedor />}
+    <>
+      <ContenedorTargetas vista="Inicio" />
+      <PromosContenedor />
       <Expresiones name="Victor Manuel" mostrar={true} />
       <PieComponente />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+
+      <Encabezado />
+
+      <Navbar />
+
+      <Routes>
+
+        <Route path="/" element={<Inicio />} />
+
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/acerca" element={<AcercaDe />} />
+
+        <Route path="/productos" element={<Productos />} />
+
+        <Route path="/galeria" element={<Galeria />} />
+
+        <Route path="/sucursales" element={<Sucursales />} />
+
+        <Route path="/contacto" element={<Contacto />} />
+
+        <Route path="/carrito" element={<Carrito />} />
+
+        <Route
+          path="/usuarios"
+          element={
+            <ProtectedRoute>
+              <Usuarios />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/registrar"
+          element={
+            <ProtectedRoute>
+              <RegistrarUsuarios />
+            </ProtectedRoute>
+          }
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
