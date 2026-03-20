@@ -33,10 +33,10 @@ Este proyecto es una aplicación web desarrollada con **React + Vite**, que simu
 -npm install axios
 
 # APIS utilizadas
--VITE_APP_GOOGLE_MAPS_API_KEY=AIzaSyDc2UvH_Ipuc0pAfUbqDyleQel6SrZB30E
--VITE_OPENWEATHER_API_KEY=53717cdf21b41733a38ec9d83d5508f6
--VITE_API_URL=https://fakestoreapi.com/
--VITE_MEALS_API=https://www.themealdb.com/api/json/v1/1
+1. VITE_APP_GOOGLE_MAPS_API_KEY=AIzaSyDc2UvH_Ipuc0pAfUbqDyleQel6SrZB30E
+2. VITE_OPENWEATHER_API_KEY=53717cdf21b41733a38ec9d83d5508f6
+3. VITE_API_URL=https://fakestoreapi.com/
+4. VITE_MEALS_API=https://www.themealdb.com/api/json/v1/1
 
 Currently, two official plugins are available:
 
