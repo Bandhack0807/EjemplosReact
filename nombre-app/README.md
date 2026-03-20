@@ -1,6 +1,42 @@
-# React + Vite
+# Proyecto React + Vite - Tienda Virtual
+Este proyecto es una aplicación web desarrollada con **React + Vite**, que simula una tienda virtual con funcionalidades como:
+- Registro y gestión de usuarios
+- Login con autenticación
+- Visualización de productos
+- Carrito de compras
+- Consumo de APIs externas
+- Mapas con Google Maps
+- Sistema de rutas protegidas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Tecnologías utilizadas
+- ⚛️ React
+- ⚡ Vite
+- 🧭 React Router DOM
+- 🌐 Fetch API / Axios
+- 🗺️ Google Maps API
+- 🛒 FakeStore API
+- 🍽️ TheMealDB API
+- 💾 LocalStorage
+
+# Instalación del proyecto
+## Crear y ejecutar proyecto con Vite
+-bash
+-npm create vite@latest nombre-app
+-cd nombre-app
+-npm install
+-npm run dev
+
+# Dependencias instaladas
+-npm install react-router-dom
+-npm install react-icons
+-npm install @react-google-maps/api
+-npm install axios
+
+# APIS utilizadas
+-VITE_APP_GOOGLE_MAPS_API_KEY=AIzaSyDc2UvH_Ipuc0pAfUbqDyleQel6SrZB30E
+-VITE_OPENWEATHER_API_KEY=53717cdf21b41733a38ec9d83d5508f6
+-VITE_API_URL=https://fakestoreapi.com/
+-VITE_MEALS_API=https://www.themealdb.com/api/json/v1/1
 
 Currently, two official plugins are available:
 
