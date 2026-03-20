@@ -20,17 +20,17 @@ Este proyecto es una aplicación web desarrollada con **React + Vite**, que simu
 
 # Instalación del proyecto
 ## Crear y ejecutar proyecto con Vite
--bash
--npm create vite@latest nombre-app
--cd nombre-app
--npm install
--npm run dev
+1. bash
+2. npm create vite@latest nombre-app
+3. cd nombre-app
+4. npm install
+5. npm run dev
 
 # Dependencias instaladas
--npm install react-router-dom
--npm install react-icons
--npm install @react-google-maps/api
--npm install axios
+1. npm install react-router-dom
+2. npm install react-icons
+3. npm install @react-google-maps/api
+4. npm install axios
 
 # APIS utilizadas
 1. VITE_APP_GOOGLE_MAPS_API_KEY=AIzaSyDc2UvH_Ipuc0pAfUbqDyleQel6SrZB30E
