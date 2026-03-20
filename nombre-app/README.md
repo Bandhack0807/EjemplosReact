@@ -9,14 +9,14 @@ Este proyecto es una aplicación web desarrollada con **React + Vite**, que simu
 - Sistema de rutas protegidas
 
 # Tecnologías utilizadas
-- ⚛️ React
-- ⚡ Vite
-- 🧭 React Router DOM
-- 🌐 Fetch API / Axios
-- 🗺️ Google Maps API
-- 🛒 FakeStore API
-- 🍽️ TheMealDB API
-- 💾 LocalStorage
+- React
+- Vite
+- React Router DOM
+- Fetch API / Axios
+- Google Maps API
+- FakeStore API
+- TheMealDB API
+- LocalStorage
 
 # Instalación del proyecto
 ## Crear y ejecutar proyecto con Vite
