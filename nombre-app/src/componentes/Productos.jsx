@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import Api from "../Services/Api";
+import { useAuth } from "../AuthContext";
 import "./Productos.css";
 
 function Productos() {
+
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [ , , , user ] = useAuth();
 
   useEffect(() => {
     const obtenerProductos = async () => {
       try {
-        const response = await Api.get("products?limit=6");
-        setProductos(response.data);
+        const res = await Api.get("products?limit=6");
+        setProductos(res.data);
       } catch (error) {
-        console.error("Error al obtener productos:", error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -21,86 +25,68 @@ function Productos() {
     obtenerProductos();
   }, []);
 
-  // ELIMINAR PRODUCTO
-  const eliminarProducto = async (id) => {
-    const confirmar = window.confirm("¿Seguro que deseas eliminar este producto?");
-    if (!confirmar) return;
+  const agregarAlCarrito = (producto) => {
 
-    try {
-      await Api.delete(`products/${id}`);
-
-      // quitar del estado
-      setProductos(productos.filter((p) => p.id !== id));
-
-      console.log("Producto eliminado:", id);
-    } catch (error) {
-      console.error("Error al eliminar producto:", error);
+    if (!user) {
+      alert("Debes iniciar sesión");
+      return;
     }
+
+    const carritos = JSON.parse(localStorage.getItem("carritos_registrados")) || [];
+
+    let carrito = carritos.find(c => c.usuario === user.username);
+
+    if (!carrito) {
+      carrito = {
+        id: Date.now(),
+        usuario: user.username,
+        fecha: new Date().toISOString(),
+        productos: []
+      };
+      carritos.push(carrito);
+    }
+
+    const existente = carrito.productos.find(p => p.nombre === producto.title);
+
+    if (existente) {
+      existente.cantidad += 1;
+    } else {
+      carrito.productos.push({
+        nombre: producto.title,
+        cantidad: 1
+      });
+    }
+
+    localStorage.setItem("carritos_registrados", JSON.stringify(carritos));
+
+    alert("Producto agregado 🛒");
   };
 
-  // ACTUALIZAR PRODUCTO
-  const actualizarProducto = async (producto) => {
-    const nuevoTitulo = prompt("Nuevo nombre del producto:", producto.title);
-    const nuevoPrecio = prompt("Nuevo precio:", producto.price);
-
-    if (!nuevoTitulo || !nuevoPrecio) return;
-
-    const productoActualizado = {
-      ...producto,
-      title: nuevoTitulo,
-      price: Number(nuevoPrecio),
-    };
-
-    try {
-      await Api.put(`products/${producto.id}`, productoActualizado);
-
-      const nuevosProductos = productos.map((p) =>
-        p.id === producto.id ? productoActualizado : p
-      );
-
-      setProductos(nuevosProductos);
-
-      console.log("Producto actualizado:", productoActualizado);
-    } catch (error) {
-      console.error("Error al actualizar producto:", error);
-    }
-  };
-
-  if (loading) return <p className="cargando">Cargando productos...</p>;
+  if (loading) return <p>Cargando...</p>;
 
   return (
     <div className="productos-container">
+      <h2>Productos</h2>
+
       <div className="productos-grid">
-        {productos.map((producto) => (
-          <div key={producto.id} className="producto-card">
-            <img src={producto.image} alt={producto.title} />
-            <h3>{producto.title}</h3>
+        {productos.map(p => (
+          <div key={p.id} className="producto-card">
 
-            <p className="descripcion">
-              {producto.description.substring(0, 90)}...
-            </p>
+            <img src={p.image} alt={p.title} />
 
-            <span className="precio">${producto.price}</span>
+            <h3>{p.title}</h3>
 
-            <div className="botones-producto">
+            <p>{p.description.substring(0, 80)}...</p>
 
-              {/* ACTUALIZAR */}
-              <button
-                className="btn-actualizar"
-                onClick={() => actualizarProducto(producto)}
-              >
-                Actualizar
+            <span>${p.price}</span>
+
+            {/* 👇 BOTÓN FUNCIONANDO */}
+            {user?.role === "cliente" && (
+              <button onClick={() => agregarAlCarrito(p)}>
+                Agregar al carrito
               </button>
+            )}
 
-              {/* ELIMINAR */}
-              <button
-                className="btn-eliminar"
-                onClick={() => eliminarProducto(producto.id)}
-              >
-                Eliminar
-              </button>
-
-            </div>
           </div>
         ))}
       </div>

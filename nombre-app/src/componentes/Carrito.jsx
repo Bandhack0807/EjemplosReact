@@ -1,181 +1,127 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../AuthContext";
 import "./Carrito.css";
-import {
-  obtenerCarritos,
-  guardarCarrito,
-  eliminarCarrito,
-} from "../Services/registroCarritos";
 
 function Carrito() {
+
+  const [ , , , user ] = useAuth();
   const [carritos, setCarritos] = useState([]);
-  const [productos, setProductos] = useState([]);
-  const [productoNombre, setProductoNombre] = useState("");
-  const [cantidad, setCantidad] = useState("");
-  const [carritoEditando, setCarritoEditando] = useState(null);
 
-  //Cargar carritos al iniciar
   useEffect(() => {
-    setCarritos(obtenerCarritos());
-  }, []);
+    cargarCarritos();
+  }, [user]);
 
-  //Agregar producto al carrito temporal
-  const agregarProducto = () => {
-    if (!productoNombre || !cantidad) return;
+  const cargarCarritos = () => {
+    const data = JSON.parse(localStorage.getItem("carritos_registrados")) || [];
 
-    const nuevoProducto = {
-      nombre: productoNombre,
-      cantidad,
-    };
-
-    setProductos([...productos, nuevoProducto]);
-
-    console.log("Producto agregado al carrito:", nuevoProducto);
-
-    setProductoNombre("");
-    setCantidad("");
+    if (user?.role === "admin") {
+      setCarritos(data);
+    } else {
+      setCarritos(data.filter(c => c.usuario === user?.username));
+    }
   };
 
-  //Crear carrito
-  const crearCarrito = () => {
-    if (productos.length === 0) return;
+  // ✏️ ACTUALIZAR CANTIDAD (cliente)
+  const actualizarCantidad = (carritoId, indexProducto) => {
 
-    const nuevoCarrito = {
-      id: Date.now(),
-      fecha: new Date().toISOString(),
-      productos,
-    };
+    const data = JSON.parse(localStorage.getItem("carritos_registrados")) || [];
 
-    guardarCarrito(nuevoCarrito);
-    setCarritos(obtenerCarritos());
-    setProductos([]);
+    const nuevos = data.map(c => {
 
-    console.log("Carrito creado correctamente:", nuevoCarrito);
+      if (c.id === carritoId && c.usuario === user.username) {
+
+        const nuevaCantidad = prompt("Nueva cantidad:");
+
+        if (!nuevaCantidad || nuevaCantidad <= 0) return c;
+
+        c.productos[indexProducto].cantidad = Number(nuevaCantidad);
+      }
+
+      return c;
+    });
+
+    localStorage.setItem("carritos_registrados", JSON.stringify(nuevos));
+    cargarCarritos();
   };
 
-  //Eliminar carrito
-  const borrarCarrito = (id) => {
-    eliminarCarrito(id);
-    setCarritos(obtenerCarritos());
+  // 🗑️ ELIMINAR PRODUCTO (cliente)
+  const eliminarProducto = (carritoId, indexProducto) => {
 
-    console.log("Carrito eliminado con ID:", id);
-  };
+    const data = JSON.parse(localStorage.getItem("carritos_registrados")) || [];
 
-  //EDITAR CARRITO
-  const editarCarrito = (carrito) => {
-    setCarritoEditando(carrito.id);
-    setProductos(carrito.productos);
+    const nuevos = data.map(c => {
 
-    console.log("Editando carrito:", carrito);
-  };
+      if (c.id === carritoId && c.usuario === user.username) {
+        c.productos.splice(indexProducto, 1);
+      }
 
-  //ACTUALIZAR CARRITO
-  const actualizarCarrito = () => {
-    const carritosActualizados = carritos.map((c) =>
-      c.id === carritoEditando
-        ? { ...c, productos }
-        : c
-    );
+      return c;
+    });
 
-    localStorage.setItem("carritos", JSON.stringify(carritosActualizados));
-
-    setCarritos(carritosActualizados);
-    setProductos([]);
-    setCarritoEditando(null);
-
-    console.log("Carrito actualizado correctamente");
+    localStorage.setItem("carritos_registrados", JSON.stringify(nuevos));
+    cargarCarritos();
   };
 
   return (
     <div className="carrito-container">
-      <h2>Crear Carrito</h2>
+      <h2>🛒 Carritos</h2>
 
-      {/*FORMULARIO */}
-      <div className="carrito-form">
-        <input
-          type="text"
-          placeholder="Nombre del producto"
-          value={productoNombre}
-          onChange={(e) => setProductoNombre(e.target.value)}
-        />
-
-        <input
-          type="number"
-          placeholder="Cantidad"
-          value={cantidad}
-          onChange={(e) => setCantidad(e.target.value)}
-        />
-
-        <button onClick={agregarProducto}>
-          Agregar Producto
-        </button>
-      </div>
-
-      {/*PREVIEW */}
-      {productos.length > 0 && (
-        <div className="productos-preview">
-          <h4>Productos en este carrito:</h4>
-
-          <ul>
-            {productos.map((p, index) => (
-              <li key={index}>
-                {p.nombre} — Cantidad {p.cantidad}
-              </li>
-            ))}
-          </ul>
-
-          {carritoEditando ? (
-            <button className="btn-crear" onClick={actualizarCarrito}>
-              Actualizar Carrito
-            </button>
-          ) : (
-            <button className="btn-crear" onClick={crearCarrito}>
-              Crear Carrito
-            </button>
-          )}
-        </div>
-      )}
-
-      <hr />
-
-      {/*LISTA DE CARRITOS */}
-      <h2>Carritos creados</h2>
+      {carritos.length === 0 && <p>No hay carritos</p>}
 
       <div className="carritos-grid">
-        {carritos.map((c, index) => (
+
+        {carritos.map((c, i) => (
           <div key={c.id} className="carrito-card">
-            <h3>Carrito #{index + 1}</h3>
-            <p className="fecha">{c.fecha}</p>
+
+            <h3>Carrito #{i + 1}</h3>
+
+            <p className="fecha">
+              {new Date(c.fecha).toLocaleString()}
+            </p>
 
             <ul>
-              {c.productos.map((p, i) => (
-                <li key={i}>
-                  {p.nombre} — Cantidad {p.cantidad}
+              {c.productos.map((p, index) => (
+                <li key={index} className="producto-item">
+
+                  <span>
+                    {p.nombre} - {p.cantidad}
+                  </span>
+
+                  {/* 👤 CLIENTE */}
+                  {user?.role === "cliente" && (
+                    <div className="acciones">
+
+                      <button
+                        className="btn-actualizar"
+                        onClick={() => actualizarCantidad(c.id, index)}
+                      >
+                        ✏️
+                      </button>
+
+                      <button
+                        className="btn-eliminar"
+                        onClick={() => eliminarProducto(c.id, index)}
+                      >
+                        🗑️
+                      </button>
+
+                    </div>
+                  )}
+
                 </li>
               ))}
             </ul>
 
-            <div className="botones-carrito">
-
-              {/* EDITAR */}
-              <button
-                className="btn-editar"
-                onClick={() => editarCarrito(c)}
-              >
-                Editar
-              </button>
-
-              {/* ELIMINAR */}
-              <button
-                className="btn-eliminar"
-                onClick={() => borrarCarrito(c.id)}
-              >
-                Eliminar
-              </button>
-
-            </div>
+            {/* 👑 ADMIN VE QUIÉN ES */}
+            {user?.role === "admin" && (
+              <p className="usuario">
+                Usuario: {c.usuario}
+              </p>
+            )}
 
           </div>
         ))}
+
       </div>
     </div>
   );
